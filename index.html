@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Blackjack Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a2f1f 0%, #051c10 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            padding: 1rem;
+        }
+
+        .portal-card {
+            max-width: 560px;
+            width: 100%;
+            background: rgba(20, 20, 18, 0.88);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            padding: 2rem 2rem 2.2rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .portal-card:hover {
+            transform: scale(1.01);
+            border-color: rgba(212, 168, 67, 0.6);
+        }
+
+        .game-icon {
+            font-size: 4.5rem;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
+        h1 {
+            color: #d4a843;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: #e6d5b3;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(212,168,67,0.3);
+            border-bottom: 1px solid rgba(212,168,67,0.3);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .redirect-message {
+            background: rgba(0,0,0,0.5);
+            border-radius: 2rem;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0 1.2rem;
+            font-size: 1rem;
+            color: #f0e6d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(212,168,67,0.3);
+            border-top: 3px solid #d4a843;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4a843;
+            color: #1e2a1c;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+            border: none;
+            cursor: pointer;
+            margin-top: 0.6rem;
+        }
+
+        .btn:hover {
+            background: #e6bd5c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.4);
+        }
+
+        .info-note {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            color: #cbbd91;
+        }
+
+        hr {
+            border-color: rgba(212,168,67,0.2);
+            margin: 1rem 0;
+        }
+
+        .card-deco {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 0.8rem;
+            opacity: 0.6;
+        }
+        .deco-suit {
+            font-size: 1.6rem;
+            color: #d4a843;
+        }
+    </style>
+    <script>
+        // Automatic redirection to the full Blackjack game
+        (function() {
+            // Target game file – same directory, standard name
+            const target = "Black-Jack.html";
+            
+            // Small delay to let the portal message show, then redirect
+            setTimeout(function() {
+                window.location.href = target;
+            }, 1800);
+        })();
+    </script>
+    <meta http-equiv="refresh" content="2; URL=Black-Jack.html">
+</head>
+<body>
+    <div class="portal-card">
+        <div class="game-icon">
+            🃟 ♠️ ♥️
+        </div>
+        <h1>♠️ BLACKJACK ♣️</h1>
+        <div class="tagline">single‑deck · classic feel</div>
+        
+        <div class="redirect-message">
+            <div class="spinner"></div>
+            <span>Loading the blackjack table...</span>
+        </div>
+        
+        <p style="color:#e0cfaa; font-size:0.9rem; margin-bottom:0.5rem;">
+            ⚡ Authentic casino rules · Insurance, splitting, doubling & surrender
+        </p>
+        
+        <a href="Black-Jack.html" class="btn">🎲 ENTER GAME NOW 🎲</a>
+        
+        <div class="card-deco">
+            <span class="deco-suit">♠</span>
+            <span class="deco-suit">♥</span>
+            <span class="deco-suit">♦</span>
+            <span class="deco-suit">♣</span>
+        </div>
+        
+        <hr />
+        <div class="info-note">
+            If you are not redirected automatically, click the button above.<br>
+            • Full audio & table themes • Realistic betting •<br>
+            Dealer hits soft 17 option (toggle in presets).
+        </div>
+    </div>
+</body>
+</html>
