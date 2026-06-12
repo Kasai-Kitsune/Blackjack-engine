@@ -2,187 +2,189 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack - Classic Casino Fun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Blackjack Portal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
-        
-        :root {
-            --felt: #0d5c3b;
-            --accent: #d4a843;
-            --dark: #111;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
-            font-family: 'Roboto', system-ui, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
-            color: #f0e6d2;
+            background: linear-gradient(145deg, #0a2f1f 0%, #051c10 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            padding: 1rem;
         }
-        
-        header {
+
+        .portal-card {
+            max-width: 560px;
             width: 100%;
-            padding: 2rem 1rem;
+            background: rgba(20, 20, 18, 0.88);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            padding: 2rem 2rem 2.2rem;
             text-align: center;
-            background: rgba(0,0,0,0.6);
-            border-bottom: 3px solid var(--accent);
+            transition: transform 0.2s ease;
         }
-        
+
+        .portal-card:hover {
+            transform: scale(1.01);
+            border-color: rgba(212, 168, 67, 0.6);
+        }
+
+        .game-icon {
+            font-size: 4.5rem;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--accent);
-            text-shadow: 0 4px 12px rgba(212, 168, 67, 0.4);
+            color: #d4a843;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.5);
             margin-bottom: 0.5rem;
         }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            letter-spacing: 2px;
-        }
-        
-        .hero {
-            position: relative;
-            width: 100%;
-            max-width: 1100px;
-            margin: 3rem auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .game-preview {
-            width: 100%;
-            max-width: 800px;
-            border: 12px solid #5c3a1e;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            background: var(--felt);
-        }
-        
-        .game-preview iframe {
-            width: 100%;
-            height: 520px;
-            border: none;
-        }
-        
-        .play-button {
+
+        .tagline {
+            color: #e6d5b3;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(212,168,67,0.3);
+            border-bottom: 1px solid rgba(212,168,67,0.3);
             display: inline-block;
-            padding: 18px 52px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: var(--accent);
-            color: #111;
-            border-radius: 50px;
+            padding: 0.3rem 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .redirect-message {
+            background: rgba(0,0,0,0.5);
+            border-radius: 2rem;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0 1.2rem;
+            font-size: 1rem;
+            color: #f0e6d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(212,168,67,0.3);
+            border-top: 3px solid #d4a843;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4a843;
+            color: #1e2a1c;
+            font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
-            transition: all 0.3s ease;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+            border: none;
+            cursor: pointer;
+            margin-top: 0.6rem;
+        }
+
+        .btn:hover {
+            background: #e6bd5c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.4);
+        }
+
+        .info-note {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            color: #cbbd91;
+        }
+
+        hr {
+            border-color: rgba(212,168,67,0.2);
             margin: 1rem 0;
         }
-        
-        .play-button:hover {
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(212, 168, 67, 0.6);
-        }
-        
-        .features {
+
+        .card-deco {
             display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
             justify-content: center;
-            max-width: 900px;
-            margin: 2rem auto;
+            gap: 12px;
+            margin-top: 0.8rem;
+            opacity: 0.6;
         }
-        
-        .feature {
-            background: rgba(255,255,255,0.05);
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            width: 280px;
-            text-align: center;
-            border: 1px solid rgba(212,168,67,0.2);
-        }
-        
-        .feature h3 {
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-        }
-        
-        footer {
-            margin-top: auto;
-            padding: 2rem;
-            text-align: center;
-            opacity: 0.7;
-            font-size: 0.95rem;
-        }
-        
-        .github {
-            color: #fff;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .game-preview iframe { height: 420px; }
+        .deco-suit {
+            font-size: 1.6rem;
+            color: #d4a843;
         }
     </style>
+    <script>
+        // Automatic redirection to the full Blackjack game
+        (function() {
+            // Target game file – same directory, standard name
+            const target = "Black-Jack.html";
+            
+            // Small delay to let the portal message show, then redirect
+            setTimeout(function() {
+                window.location.href = target;
+            }, 1800);
+        })();
+    </script>
+    <meta http-equiv="refresh" content="2; URL=Black-Jack.html">
 </head>
 <body>
-    <header>
-        <h1>BLACKJACK</h1>
-        <p class="subtitle">TRADITIONAL SINGLE-DECK • CASINO RULES</p>
-    </header>
-
-    <div class="hero">
-        <div class="game-preview">
-            <!-- Direct link to the game -->
-            <iframe src="Black-Jack.html" title="Play Blackjack"></iframe>
+    <div class="portal-card">
+        <div class="game-icon">
+            🃟 ♠️ ♥️
+        </div>
+        <h1>♠️ BLACKJACK ♣️</h1>
+        <div class="tagline">single‑deck · classic feel</div>
+        
+        <div class="redirect-message">
+            <div class="spinner"></div>
+            <span>Loading the blackjack table...</span>
         </div>
         
-        <a href="Black-Jack.html" class="play-button">PLAY NOW</a>
+        <p style="color:#e0cfaa; font-size:0.9rem; margin-bottom:0.5rem;">
+            ⚡ Authentic casino rules · Insurance, splitting, doubling & surrender
+        </p>
         
-        <div class="features">
-            <div class="feature">
-                <h3>🎴 Single Deck</h3>
-                <p>Authentic single-deck gameplay with realistic shuffling.</p>
-            </div>
-            <div class="feature">
-                <h3>♠️ Classic Rules</h3>
-                <p>Hit, Stand, Double, Split, Surrender + Insurance.</p>
-            </div>
-            <div class="feature">
-                <h3>💰 Realistic Betting</h3>
-                <p>Chip tray, balance tracking, stats, and rebuy system.</p>
-            </div>
+        <a href="Black-Jack.html" class="btn">🎲 ENTER GAME NOW 🎲</a>
+        
+        <div class="card-deco">
+            <span class="deco-suit">♠</span>
+            <span class="deco-suit">♥</span>
+            <span class="deco-suit">♦</span>
+            <span class="deco-suit">♣</span>
+        </div>
+        
+        <hr />
+        <div class="info-note">
+            If you are not redirected automatically, click the button above.<br>
+            • Full audio & table themes • Realistic betting •<br>
+            Dealer hits soft 17 option (toggle in presets).
         </div>
     </div>
-
-    <footer>
-        <p>Made with ❤️ for casino enthusiasts</p>
-        <a href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" class="github">
-            ⭐ View on GitHub
-        </a>
-        <p style="margin-top: 1rem; font-size: 0.85rem;">Single-deck Blackjack • Dealer hits soft 17 option • Beautiful themes</p>
-    </footer>
-
-    <script>
-        // Optional: Auto-refresh iframe or handle mobile
-        console.log('%cBlackjack Portal Ready 🃏', 'color:#d4a843; font-size:1.1rem;');
-    </script>
 </body>
 </html>
